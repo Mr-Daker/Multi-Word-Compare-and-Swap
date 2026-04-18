@@ -1,0 +1,3 @@
+(library
+ (name mcas_volatile)
+ (modules mcas_volatile))

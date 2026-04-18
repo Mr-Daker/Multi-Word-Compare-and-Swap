@@ -3,37 +3,3 @@
 (library
  (name mcas)
  (modules mcas))
-
-; Library: Old double-collect snapshot (from Assignment 2, for comparison)
-
-(library
- (name snapshot)
- (modules snapshot))
-
-; Library: New atomic snapshot built using MCAS
-
-(library
- (name mcas_snapshot)
- (modules mcas_snapshot)
- (libraries mcas))
-
-; Executable: QCheck-Lin linearizability test for isolated MCAS
-
-(executable
- (name qcheck_lin_mcas)
- (modules qcheck_lin_mcas)
- (libraries mcas qcheck-lin.domain))
-
-; Executable: QCheck-Lin linearizability test for MCAS-based snapshot
-
-(executable
- (name qcheck_lin_snapshot)
- (modules qcheck_lin_snapshot)
- (libraries mcas_snapshot qcheck-lin.domain))
-
-; Executable: Performance benchmarks (Snapshot vs MCAS-Snapshot)
-
-(executable
- (name benchmark)
- (modules benchmark)
- (libraries snapshot mcas_snapshot))

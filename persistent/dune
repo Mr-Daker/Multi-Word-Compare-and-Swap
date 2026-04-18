@@ -1,0 +1,3 @@
+(library
+ (name mcas_persistent)
+ (modules mcas_persistent))

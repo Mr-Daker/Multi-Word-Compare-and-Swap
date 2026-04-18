@@ -1,0 +1,27 @@
+; ThreadSanitizer stress tests.
+;
+; These programs stress-test concurrent operations on each STM module.
+; To enable full TSan instrumentation, use an OCaml switch built with TSan
+; support (e.g. opam switch create 5.2.0+tsan) and add:
+;   (ocamlopt_flags (:standard -tsan))
+; to each stanza below.
+;
+; Usage:
+;   dune exec tsan/tsan_volatile.exe
+;   dune exec tsan/tsan_persistent.exe
+;   dune exec tsan/tsan_snapshot.exe
+
+(executable
+ (name tsan_volatile)
+ (modules tsan_volatile)
+ (libraries stm_volatile))
+
+(executable
+ (name tsan_persistent)
+ (modules tsan_persistent)
+ (libraries stm_persistent))
+
+(executable
+ (name tsan_snapshot)
+ (modules tsan_snapshot)
+ (libraries stm_snapshot))

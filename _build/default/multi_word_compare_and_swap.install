@@ -1,0 +1,8 @@
+lib: [
+  "_build/install/default/lib/multi_word_compare_and_swap/META"
+  "_build/install/default/lib/multi_word_compare_and_swap/dune-package"
+  "_build/install/default/lib/multi_word_compare_and_swap/opam"
+]
+doc: [
+  "_build/install/default/doc/multi_word_compare_and_swap/README.md"
+]

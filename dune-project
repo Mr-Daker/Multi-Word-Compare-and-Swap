@@ -1,4 +1,4 @@
-(lang dune 3.21)
+(lang dune 3.20)
 
 (name multi_word_compare_and_swap)
 
@@ -17,6 +17,7 @@
 
 (package
  (name multi_word_compare_and_swap)
+ (allow_empty)
  (synopsis "A short synopsis")
  (description "A longer description")
  (depends ocaml)

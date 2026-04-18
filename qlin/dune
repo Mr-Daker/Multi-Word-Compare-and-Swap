@@ -1,0 +1,28 @@
+; Executable: QCheck-Lin linearizability test for isolated MCAS
+
+(executable
+ (name qcheck_lin_mcas)
+ (modules qcheck_lin_mcas)
+ (libraries mcas_volatile qcheck-lin.domain qcheck-core))
+
+; Executable: QCheck-Lin linearizability test for MCAS-based snapshot
+
+(executable
+ (name qcheck_lin_snapshot)
+ (modules qcheck_lin_snapshot)
+ (libraries mcas_snapshot_volatile qcheck-lin.domain qcheck-core))
+
+(executable
+ (name qcheck_lin_stm_volatile)
+ (modules qcheck_lin_stm_volatile)
+ (libraries stm_volatile qcheck-lin.domain qcheck-core))
+
+(executable
+ (name qcheck_lin_stm_persistent)
+ (modules qcheck_lin_stm_persistent)
+ (libraries stm_persistent qcheck-lin.domain qcheck-core))
+
+(executable
+ (name qcheck_lin_stm_snapshot)
+ (modules qcheck_lin_stm_snapshot)
+ (libraries stm_snapshot qcheck-lin.domain qcheck-core))
