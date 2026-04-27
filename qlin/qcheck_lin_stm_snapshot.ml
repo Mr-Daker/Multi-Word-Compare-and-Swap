@@ -13,9 +13,9 @@ module Spec = struct
 
   let gen_cmd =
     let open QCheck.Gen in
-    frequency
+    oneof_weighted
       [
-        (5, pair (0 -- 2) small_int |> map (fun (i, v) -> Update (i, v)));
+        (5, pair (0 -- 2) nat_small |> map (fun (i, v) -> Update (i, v)));
         (4, pure Scan);
         (1, pure Size);
       ]

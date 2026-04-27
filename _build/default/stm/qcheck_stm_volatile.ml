@@ -31,8 +31,8 @@ let arb_cmd _state =
   QCheck.make ~print:show_cmd
     Gen.(oneof [
       return Get;
-      map (fun v -> Set v) small_int;
-      map2 (fun e d -> Txn (e, d)) small_int small_int;
+      map (fun v -> Set v) nat_small;
+      map2 (fun e d -> Txn (e, d)) nat_small nat_small;
     ])
 
 let next_state cmd state =

@@ -8,7 +8,7 @@
   benchmark \
   tsan tsan-volatile tsan-persistent tsan-snapshot
 
-OPAM_SWITCH := 5.2.0
+OPAM_SWITCH ?= $(or $(shell opam switch show 2>/dev/null),default)
 OPAM_RUN := opam exec --switch=$(OPAM_SWITCH) --
 
 # Default target

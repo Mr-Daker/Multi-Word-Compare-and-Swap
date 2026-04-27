@@ -32,10 +32,10 @@ let show_cmd = function
 
 let arb_cmd _state =
   QCheck.make ~print:show_cmd
-    Gen.(frequency [
+    Gen.(oneof_weighted [
       (3, return Get);
-      (3, map (fun v -> Set v) small_int);
-      (3, map2 (fun e d -> Txn (e, d)) small_int small_int);
+      (3, map (fun v -> Set v) nat_small);
+      (3, map2 (fun e d -> Txn (e, d)) nat_small nat_small);
       (1, return Recover);
     ])
 

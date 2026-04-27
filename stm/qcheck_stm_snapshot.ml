@@ -35,7 +35,7 @@ let arb_cmd _state =
     Gen.(oneof [
       map2 (fun i v -> Update (i, v))
         (int_range 0 (snapshot_size - 1))
-        small_int;
+        nat_small;
       return Scan;
       return Size;
     ])

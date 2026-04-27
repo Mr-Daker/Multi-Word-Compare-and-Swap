@@ -15,11 +15,11 @@ module Spec = struct
 
   let gen_cmd =
     let open QCheck.Gen in
-    frequency
+    oneof_weighted
       [
         (3, pure Get);
-        (3, map (fun v -> Set v) small_int);
-        (3, pair small_int small_int |> map (fun (a, b) -> Txn (a, b)));
+        (3, map (fun v -> Set v) nat_small);
+        (3, pair nat_small nat_small |> map (fun (a, b) -> Txn (a, b)));
         (1, pure Recover);
       ]
 
