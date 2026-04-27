@@ -26,7 +26,7 @@ Memory layout and cache effects
 
 ## Trade-offs
 
-# MCAS Advantages:
+### MCAS Advantages:
 Stronger Correctness: Provides true linearizable atomicity
 Composability: Can be used to build more complex atomic operations
 Uniform Interface: Updates and scans use the same underlying primitive
@@ -37,7 +37,7 @@ Simplicity: Only uses hardware atomic reads
 Scalability: Performance improves with thread count
 Low Latency: Minimal overhead per operation
 
-# The Trade-off Decision:
+### The Trade-off Decision:
 MCAS provides "expressive power" (as stated in your research question) by enabling complex atomic operations that would be difficult to implement with double-collect. However, this comes at a significant performance cost - especially for read-heavy workloads where the overhead of multi-word validation outweighs the benefits.
 
 For atomic snapshots specifically, double-collect appears to be the better choice unless you need the stronger composability guarantees of MCAS for building more complex data structures.
