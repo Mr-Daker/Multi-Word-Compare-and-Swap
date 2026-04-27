@@ -6,8 +6,3 @@
  (name mcas_snapshot_volatile)
  (modules mcas_snapshot_volatile)
  (libraries mcas_volatile))
-
-(library
- (name mcas_snapshot_persistent)
- (modules mcas_snapshot_persistent)
- (libraries mcas_persistent))

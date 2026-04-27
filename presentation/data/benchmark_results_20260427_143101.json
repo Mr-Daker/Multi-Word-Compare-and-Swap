@@ -1,0 +1,647 @@
+{
+  "generated_at": "20260427_143101",
+  "command": "opam exec -- dune exec ./benchmarking/benchmark.exe",
+  "row_count": 80,
+  "results": [
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "updates_100",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.003591,
+      "avg_us_per_op": 0.09
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "updates_100",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.004582,
+      "avg_us_per_op": 0.057
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "updates_100",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.012719,
+      "avg_us_per_op": 0.079
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "updates_100",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 0.034022,
+      "avg_us_per_op": 0.106
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "updates_100",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 0.056071,
+      "avg_us_per_op": 0.088
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "balanced_50_50",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.011174,
+      "avg_us_per_op": 0.279
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "balanced_50_50",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.020035,
+      "avg_us_per_op": 0.25
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "balanced_50_50",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.03205,
+      "avg_us_per_op": 0.2
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "balanced_50_50",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 0.051744,
+      "avg_us_per_op": 0.162
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "balanced_50_50",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 0.109964,
+      "avg_us_per_op": 0.172
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_90",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.009193,
+      "avg_us_per_op": 0.23
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_90",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.014646,
+      "avg_us_per_op": 0.183
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_90",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.023379,
+      "avg_us_per_op": 0.146
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_90",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 0.056602,
+      "avg_us_per_op": 0.177
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_90",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 0.097994,
+      "avg_us_per_op": 0.153
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_100",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.01269,
+      "avg_us_per_op": 0.317
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_100",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.012739,
+      "avg_us_per_op": 0.159
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_100",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.017768,
+      "avg_us_per_op": 0.111
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_100",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 0.040421,
+      "avg_us_per_op": 0.126
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_100",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 0.075483,
+      "avg_us_per_op": 0.118
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "updates_100",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.010264,
+      "avg_us_per_op": 0.257
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "updates_100",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.016369,
+      "avg_us_per_op": 0.205
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "updates_100",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.027303,
+      "avg_us_per_op": 0.171
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "updates_100",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 0.061152,
+      "avg_us_per_op": 0.191
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "updates_100",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 0.124305,
+      "avg_us_per_op": 0.194
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "balanced_50_50",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.067988,
+      "avg_us_per_op": 1.7
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "balanced_50_50",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.181681,
+      "avg_us_per_op": 2.271
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "balanced_50_50",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.578899,
+      "avg_us_per_op": 3.618
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "balanced_50_50",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 1.574292,
+      "avg_us_per_op": 4.92
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "balanced_50_50",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 3.023042,
+      "avg_us_per_op": 4.724
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_90",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.098256,
+      "avg_us_per_op": 2.456
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_90",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.315215,
+      "avg_us_per_op": 3.94
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_90",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.824425,
+      "avg_us_per_op": 5.153
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_90",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 1.989194,
+      "avg_us_per_op": 6.216
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_90",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 3.927969,
+      "avg_us_per_op": 6.137
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_100",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.101708,
+      "avg_us_per_op": 2.543
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_100",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.273914,
+      "avg_us_per_op": 3.424
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_100",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.740234,
+      "avg_us_per_op": 4.626
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_100",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 1.957264,
+      "avg_us_per_op": 6.116
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_100",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 4.025417,
+      "avg_us_per_op": 6.29
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "balanced_50_50",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.011174,
+      "avg_us_per_op": 0.279
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "balanced_50_50",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.067988,
+      "avg_us_per_op": 1.7
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "balanced_50_50",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.020035,
+      "avg_us_per_op": 0.25
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "balanced_50_50",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.181681,
+      "avg_us_per_op": 2.271
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "balanced_50_50",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.03205,
+      "avg_us_per_op": 0.2
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "balanced_50_50",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.578899,
+      "avg_us_per_op": 3.618
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "balanced_50_50",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 0.051744,
+      "avg_us_per_op": 0.162
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "balanced_50_50",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 1.574292,
+      "avg_us_per_op": 4.92
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "balanced_50_50",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 0.109964,
+      "avg_us_per_op": 0.172
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "balanced_50_50",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 3.023042,
+      "avg_us_per_op": 4.724
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_100",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.01269,
+      "avg_us_per_op": 0.317
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_100",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.101708,
+      "avg_us_per_op": 2.543
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_100",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.012739,
+      "avg_us_per_op": 0.159
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_100",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.273914,
+      "avg_us_per_op": 3.424
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_100",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.017768,
+      "avg_us_per_op": 0.111
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_100",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.740234,
+      "avg_us_per_op": 4.626
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_100",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 0.040421,
+      "avg_us_per_op": 0.126
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_100",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 1.957264,
+      "avg_us_per_op": 6.116
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_100",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 0.075483,
+      "avg_us_per_op": 0.118
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_100",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 4.025417,
+      "avg_us_per_op": 6.29
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_90",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.009193,
+      "avg_us_per_op": 0.23
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_90",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.098256,
+      "avg_us_per_op": 2.456
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_90",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.014646,
+      "avg_us_per_op": 0.183
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_90",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.315215,
+      "avg_us_per_op": 3.94
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_90",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.023379,
+      "avg_us_per_op": 0.146
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_90",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.824425,
+      "avg_us_per_op": 5.153
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_90",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 0.056602,
+      "avg_us_per_op": 0.177
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_90",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 1.989194,
+      "avg_us_per_op": 6.216
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "scans_90",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 0.097994,
+      "avg_us_per_op": 0.153
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "scans_90",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 3.927969,
+      "avg_us_per_op": 6.137
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "updates_100",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.003591,
+      "avg_us_per_op": 0.09
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "updates_100",
+      "domains": 2,
+      "total_ops": 40000,
+      "seconds": 0.010264,
+      "avg_us_per_op": 0.257
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "updates_100",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.004582,
+      "avg_us_per_op": 0.057
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "updates_100",
+      "domains": 4,
+      "total_ops": 80000,
+      "seconds": 0.016369,
+      "avg_us_per_op": 0.205
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "updates_100",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.012719,
+      "avg_us_per_op": 0.079
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "updates_100",
+      "domains": 8,
+      "total_ops": 160000,
+      "seconds": 0.027303,
+      "avg_us_per_op": 0.171
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "updates_100",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 0.034022,
+      "avg_us_per_op": 0.106
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "updates_100",
+      "domains": 16,
+      "total_ops": 320000,
+      "seconds": 0.061152,
+      "avg_us_per_op": 0.191
+    },
+    {
+      "impl_name": "snapshot_baseline",
+      "scenario_name": "updates_100",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 0.056071,
+      "avg_us_per_op": 0.088
+    },
+    {
+      "impl_name": "mcas_volatile",
+      "scenario_name": "updates_100",
+      "domains": 32,
+      "total_ops": 640000,
+      "seconds": 0.124305,
+      "avg_us_per_op": 0.194
+    }
+  ]
+}

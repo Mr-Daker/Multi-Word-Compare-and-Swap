@@ -3,10 +3,6 @@
  (modules stm_volatile))
 
 (library
- (name stm_persistent)
- (modules stm_persistent))
-
-(library
  (name stm_snapshot)
  (modules stm_snapshot)
  (libraries stm_volatile))
@@ -15,11 +11,6 @@
  (name qcheck_stm_volatile)
  (modules qcheck_stm_volatile)
  (libraries stm_volatile qcheck-stm.sequential qcheck-stm.domain qcheck-core))
-
-(executable
- (name qcheck_stm_persistent)
- (modules qcheck_stm_persistent)
- (libraries stm_persistent qcheck-stm.sequential qcheck-stm.domain qcheck-core))
 
 (executable
  (name qcheck_stm_snapshot)

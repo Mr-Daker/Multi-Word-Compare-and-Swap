@@ -1,0 +1,126 @@
+
+Snapshot Benchmark Comparison (Elapsed Time)
+registers=16  ops/domain=200000
+
+running snapshot_baseline      updates_100      domains=2
+snapshot_baseline      updates_100      domains=2  ops=  400000  time= 0.026480s  avg=   0.066us/op
+running snapshot_baseline      updates_100      domains=4
+snapshot_baseline      updates_100      domains=4  ops=  800000  time= 0.044175s  avg=   0.055us/op
+running snapshot_baseline      updates_100      domains=8
+snapshot_baseline      updates_100      domains=8  ops= 1600000  time= 0.079389s  avg=   0.050us/op
+running snapshot_baseline      updates_100      domains=16
+snapshot_baseline      updates_100      domains=16  ops= 3200000  time= 0.100908s  avg=   0.032us/op
+running snapshot_baseline      updates_100      domains=32
+snapshot_baseline      updates_100      domains=32  ops= 6400000  time= 0.182477s  avg=   0.029us/op
+running snapshot_baseline      balanced_50_50   domains=2
+snapshot_baseline      balanced_50_50   domains=2  ops=  400000  time= 0.064922s  avg=   0.162us/op
+running snapshot_baseline      balanced_50_50   domains=4
+snapshot_baseline      balanced_50_50   domains=4  ops=  800000  time= 0.097334s  avg=   0.122us/op
+running snapshot_baseline      balanced_50_50   domains=8
+snapshot_baseline      balanced_50_50   domains=8  ops= 1600000  time= 0.171450s  avg=   0.107us/op
+running snapshot_baseline      balanced_50_50   domains=16
+snapshot_baseline      balanced_50_50   domains=16  ops= 3200000  time= 0.295824s  avg=   0.092us/op
+running snapshot_baseline      balanced_50_50   domains=32
+snapshot_baseline      balanced_50_50   domains=32  ops= 6400000  time= 0.619747s  avg=   0.097us/op
+running snapshot_baseline      scans_90         domains=2
+snapshot_baseline      scans_90         domains=2  ops=  400000  time= 0.076252s  avg=   0.191us/op
+running snapshot_baseline      scans_90         domains=4
+snapshot_baseline      scans_90         domains=4  ops=  800000  time= 0.097387s  avg=   0.122us/op
+running snapshot_baseline      scans_90         domains=8
+snapshot_baseline      scans_90         domains=8  ops= 1600000  time= 0.141549s  avg=   0.088us/op
+running snapshot_baseline      scans_90         domains=16
+snapshot_baseline      scans_90         domains=16  ops= 3200000  time= 0.243034s  avg=   0.076us/op
+running snapshot_baseline      scans_90         domains=32
+snapshot_baseline      scans_90         domains=32  ops= 6400000  time= 0.467934s  avg=   0.073us/op
+running snapshot_baseline      scans_100        domains=2
+snapshot_baseline      scans_100        domains=2  ops=  400000  time= 0.064150s  avg=   0.160us/op
+running snapshot_baseline      scans_100        domains=4
+snapshot_baseline      scans_100        domains=4  ops=  800000  time= 0.097917s  avg=   0.122us/op
+running snapshot_baseline      scans_100        domains=8
+snapshot_baseline      scans_100        domains=8  ops= 1600000  time= 0.135628s  avg=   0.085us/op
+running snapshot_baseline      scans_100        domains=16
+snapshot_baseline      scans_100        domains=16  ops= 3200000  time= 0.212014s  avg=   0.066us/op
+running snapshot_baseline      scans_100        domains=32
+snapshot_baseline      scans_100        domains=32  ops= 6400000  time= 0.428995s  avg=   0.067us/op
+running mcas_volatile          updates_100      domains=2
+mcas_volatile          updates_100      domains=2  ops=  400000  time= 0.061436s  avg=   0.154us/op
+running mcas_volatile          updates_100      domains=4
+mcas_volatile          updates_100      domains=4  ops=  800000  time= 0.161675s  avg=   0.202us/op
+running mcas_volatile          updates_100      domains=8
+mcas_volatile          updates_100      domains=8  ops= 1600000  time= 0.169001s  avg=   0.106us/op
+running mcas_volatile          updates_100      domains=16
+mcas_volatile          updates_100      domains=16  ops= 3200000  time= 0.549672s  avg=   0.172us/op
+running mcas_volatile          updates_100      domains=32
+mcas_volatile          updates_100      domains=32  ops= 6400000  time= 1.033373s  avg=   0.161us/op
+running mcas_volatile          balanced_50_50   domains=2
+mcas_volatile          balanced_50_50   domains=2  ops=  400000  time= 0.573444s  avg=   1.434us/op
+running mcas_volatile          balanced_50_50   domains=4
+mcas_volatile          balanced_50_50   domains=4  ops=  800000  time= 2.074554s  avg=   2.593us/op
+running mcas_volatile          balanced_50_50   domains=8
+mcas_volatile          balanced_50_50   domains=8  ops= 1600000  time= 5.244654s  avg=   3.278us/op
+running mcas_volatile          balanced_50_50   domains=16
+mcas_volatile          balanced_50_50   domains=16  ops= 3200000  time=14.712535s  avg=   4.598us/op
+running mcas_volatile          balanced_50_50   domains=32
+mcas_volatile          balanced_50_50   domains=32  ops= 6400000  time=31.008770s  avg=   4.845us/op
+running mcas_volatile          scans_90         domains=2
+mcas_volatile          scans_90         domains=2  ops=  400000  time= 0.873289s  avg=   2.183us/op
+running mcas_volatile          scans_90         domains=4
+mcas_volatile          scans_90         domains=4  ops=  800000  time= 2.876482s  avg=   3.596us/op
+running mcas_volatile          scans_90         domains=8
+mcas_volatile          scans_90         domains=8  ops= 1600000  time= 8.173360s  avg=   5.108us/op
+running mcas_volatile          scans_90         domains=16
+mcas_volatile          scans_90         domains=16  ops= 3200000  time=19.835271s  avg=   6.199us/op
+running mcas_volatile          scans_90         domains=32
+mcas_volatile          scans_90         domains=32  ops= 6400000  time=41.506180s  avg=   6.485us/op
+running mcas_volatile          scans_100        domains=2
+mcas_volatile          scans_100        domains=2  ops=  400000  time= 0.904892s  avg=   2.262us/op
+running mcas_volatile          scans_100        domains=4
+mcas_volatile          scans_100        domains=4  ops=  800000  time= 2.994028s  avg=   3.743us/op
+running mcas_volatile          scans_100        domains=8
+mcas_volatile          scans_100        domains=8  ops= 1600000  time= 8.763943s  avg=   5.477us/op
+running mcas_volatile          scans_100        domains=16
+mcas_volatile          scans_100        domains=16  ops= 3200000  time=19.493190s  avg=   6.092us/op
+running mcas_volatile          scans_100        domains=32
+mcas_volatile          scans_100        domains=32  ops= 6400000  time=39.660652s  avg=   6.197us/op
+
+Summary By Scenario
+snapshot_baseline      balanced_50_50   domains=2  ops=  400000  time= 0.064922s  avg=   0.162us/op
+mcas_volatile          balanced_50_50   domains=2  ops=  400000  time= 0.573444s  avg=   1.434us/op
+snapshot_baseline      balanced_50_50   domains=4  ops=  800000  time= 0.097334s  avg=   0.122us/op
+mcas_volatile          balanced_50_50   domains=4  ops=  800000  time= 2.074554s  avg=   2.593us/op
+snapshot_baseline      balanced_50_50   domains=8  ops= 1600000  time= 0.171450s  avg=   0.107us/op
+mcas_volatile          balanced_50_50   domains=8  ops= 1600000  time= 5.244654s  avg=   3.278us/op
+snapshot_baseline      balanced_50_50   domains=16  ops= 3200000  time= 0.295824s  avg=   0.092us/op
+mcas_volatile          balanced_50_50   domains=16  ops= 3200000  time=14.712535s  avg=   4.598us/op
+snapshot_baseline      balanced_50_50   domains=32  ops= 6400000  time= 0.619747s  avg=   0.097us/op
+mcas_volatile          balanced_50_50   domains=32  ops= 6400000  time=31.008770s  avg=   4.845us/op
+snapshot_baseline      scans_100        domains=2  ops=  400000  time= 0.064150s  avg=   0.160us/op
+mcas_volatile          scans_100        domains=2  ops=  400000  time= 0.904892s  avg=   2.262us/op
+snapshot_baseline      scans_100        domains=4  ops=  800000  time= 0.097917s  avg=   0.122us/op
+mcas_volatile          scans_100        domains=4  ops=  800000  time= 2.994028s  avg=   3.743us/op
+snapshot_baseline      scans_100        domains=8  ops= 1600000  time= 0.135628s  avg=   0.085us/op
+mcas_volatile          scans_100        domains=8  ops= 1600000  time= 8.763943s  avg=   5.477us/op
+snapshot_baseline      scans_100        domains=16  ops= 3200000  time= 0.212014s  avg=   0.066us/op
+mcas_volatile          scans_100        domains=16  ops= 3200000  time=19.493190s  avg=   6.092us/op
+snapshot_baseline      scans_100        domains=32  ops= 6400000  time= 0.428995s  avg=   0.067us/op
+mcas_volatile          scans_100        domains=32  ops= 6400000  time=39.660652s  avg=   6.197us/op
+snapshot_baseline      scans_90         domains=2  ops=  400000  time= 0.076252s  avg=   0.191us/op
+mcas_volatile          scans_90         domains=2  ops=  400000  time= 0.873289s  avg=   2.183us/op
+snapshot_baseline      scans_90         domains=4  ops=  800000  time= 0.097387s  avg=   0.122us/op
+mcas_volatile          scans_90         domains=4  ops=  800000  time= 2.876482s  avg=   3.596us/op
+snapshot_baseline      scans_90         domains=8  ops= 1600000  time= 0.141549s  avg=   0.088us/op
+mcas_volatile          scans_90         domains=8  ops= 1600000  time= 8.173360s  avg=   5.108us/op
+snapshot_baseline      scans_90         domains=16  ops= 3200000  time= 0.243034s  avg=   0.076us/op
+mcas_volatile          scans_90         domains=16  ops= 3200000  time=19.835271s  avg=   6.199us/op
+snapshot_baseline      scans_90         domains=32  ops= 6400000  time= 0.467934s  avg=   0.073us/op
+mcas_volatile          scans_90         domains=32  ops= 6400000  time=41.506180s  avg=   6.485us/op
+snapshot_baseline      updates_100      domains=2  ops=  400000  time= 0.026480s  avg=   0.066us/op
+mcas_volatile          updates_100      domains=2  ops=  400000  time= 0.061436s  avg=   0.154us/op
+snapshot_baseline      updates_100      domains=4  ops=  800000  time= 0.044175s  avg=   0.055us/op
+mcas_volatile          updates_100      domains=4  ops=  800000  time= 0.161675s  avg=   0.202us/op
+snapshot_baseline      updates_100      domains=8  ops= 1600000  time= 0.079389s  avg=   0.050us/op
+mcas_volatile          updates_100      domains=8  ops= 1600000  time= 0.169001s  avg=   0.106us/op
+snapshot_baseline      updates_100      domains=16  ops= 3200000  time= 0.100908s  avg=   0.032us/op
+mcas_volatile          updates_100      domains=16  ops= 3200000  time= 0.549672s  avg=   0.172us/op
+snapshot_baseline      updates_100      domains=32  ops= 6400000  time= 0.182477s  avg=   0.029us/op
+mcas_volatile          updates_100      domains=32  ops= 6400000  time= 1.033373s  avg=   0.161us/op

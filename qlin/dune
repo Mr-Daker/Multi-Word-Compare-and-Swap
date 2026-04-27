@@ -18,11 +18,6 @@
  (libraries stm_volatile qcheck-lin.domain qcheck-core))
 
 (executable
- (name qcheck_lin_stm_persistent)
- (modules qcheck_lin_stm_persistent)
- (libraries stm_persistent qcheck-lin.domain qcheck-core))
-
-(executable
  (name qcheck_lin_stm_snapshot)
  (modules qcheck_lin_stm_snapshot)
  (libraries stm_snapshot qcheck-lin.domain qcheck-core))

@@ -11,7 +11,7 @@ type result = {
   domains : int;
   total_ops : int;
   seconds : float;
-  throughput : float;
+  avg_us_per_op : float;
 }
 
 let scenarios =
@@ -22,10 +22,10 @@ let scenarios =
     { name = "scans_100"; update_percent = 0 };
   ]
 
-let domain_counts = [ 1; 2; 4; 8 ]
+let domain_counts = [ 2; 4; 8; 16; 32;]
 
 let registers = 16
-let ops_per_domain = 2_000
+let ops_per_domain = 200_000
 
 let flush () = Stdlib.flush Stdlib.stdout
 
@@ -61,17 +61,18 @@ let run_workload
     domains;
     total_ops;
     seconds;
-    throughput = float_of_int total_ops /. seconds;
+    avg_us_per_op = (seconds *. 1_000_000.0) /. float_of_int total_ops;
   }
 
 let print_result result =
-  printf "%-22s %-16s domains=%d  ops=%8d  time=%7.3fs  throughput=%10.0f ops/s\n"
+  printf
+    "%-22s %-16s domains=%d  ops=%8d  time=%9.6fs  avg=%8.3fus/op\n"
     result.impl_name result.scenario_name result.domains result.total_ops result.seconds
-    result.throughput;
+    result.avg_us_per_op;
   flush ()
 
 let print_header () =
-  printf "\nSnapshot Benchmark Comparison\n";
+  printf "\nSnapshot Benchmark Comparison (Elapsed Time)\n";
   printf "registers=%d  ops/domain=%d\n\n" registers ops_per_domain;
   flush ()
 
@@ -109,8 +110,6 @@ let print_summary_group results =
 
 let () =
   print_header ();
-  Mcas_snapshot_persistent.recover ();
-
   let baseline_results =
     benchmark_impl ~impl_name:"snapshot_baseline" ~create:Snapshot.create
       ~update:Snapshot.update ~scan:Snapshot.scan
@@ -119,10 +118,5 @@ let () =
     benchmark_impl ~impl_name:"mcas_volatile" ~create:Mcas_snapshot_volatile.create
       ~update:Mcas_snapshot_volatile.update ~scan:Mcas_snapshot_volatile.scan
   in
-  let persistent_results =
-    benchmark_impl ~impl_name:"mcas_persistent" ~create:Mcas_snapshot_persistent.create
-      ~update:Mcas_snapshot_persistent.update ~scan:Mcas_snapshot_persistent.scan
-  in
-
-  let all_results = baseline_results @ volatile_results @ persistent_results in
+  let all_results = baseline_results @ volatile_results in
   print_summary_group all_results

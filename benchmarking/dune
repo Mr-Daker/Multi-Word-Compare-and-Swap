@@ -1,4 +1,4 @@
 (executable
  (name benchmark)
  (modules benchmark)
- (libraries unix snapshot mcas_snapshot_volatile mcas_snapshot_persistent))
+ (libraries unix snapshot mcas_snapshot_volatile))

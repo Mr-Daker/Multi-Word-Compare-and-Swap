@@ -8,18 +8,12 @@
 ;
 ; Usage:
 ;   dune exec tsan/tsan_volatile.exe
-;   dune exec tsan/tsan_persistent.exe
 ;   dune exec tsan/tsan_snapshot.exe
 
 (executable
  (name tsan_volatile)
  (modules tsan_volatile)
  (libraries stm_volatile))
-
-(executable
- (name tsan_persistent)
- (modules tsan_persistent)
- (libraries stm_persistent))
 
 (executable
  (name tsan_snapshot)
