@@ -2,3 +2,13 @@
  (name benchmark)
  (modules benchmark)
  (libraries unix snapshot mcas_snapshot_volatile))
+
+(executable
+ (name benchmark_linked_list)
+ (modules benchmark_linked_list)
+ (libraries unix lockfree_linked_list mcas_lockfree_linked_list))
+
+(executable
+ (name benchmark_doubly_linked_list)
+ (modules benchmark_doubly_linked_list)
+ (libraries unix coarse_doubly_linked_list mcas_doubly_linked_list))

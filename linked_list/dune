@@ -1,0 +1,8 @@
+(library
+ (name lockfree_linked_list)
+ (modules lockfree_linked_list))
+
+(library
+ (name mcas_lockfree_linked_list)
+ (modules mcas_lockfree_linked_list)
+ (libraries mcas_volatile))

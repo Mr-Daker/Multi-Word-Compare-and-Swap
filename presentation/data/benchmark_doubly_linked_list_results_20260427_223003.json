@@ -1,0 +1,487 @@
+{
+  "generated_at": "20260427_223003",
+  "command": "opam exec -- dune exec ./benchmarking/benchmark_doubly_linked_list.exe",
+  "row_count": 60,
+  "results": [
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 2,
+      "total_ops": 300000,
+      "seconds": 0.168319,
+      "avg_us_per_op": 0.561
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 4,
+      "total_ops": 600000,
+      "seconds": 0.367789,
+      "avg_us_per_op": 0.613
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 8,
+      "total_ops": 1200000,
+      "seconds": 0.821653,
+      "avg_us_per_op": 0.685
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 16,
+      "total_ops": 2400000,
+      "seconds": 1.901315,
+      "avg_us_per_op": 0.792
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 32,
+      "total_ops": 4800000,
+      "seconds": 4.066726,
+      "avg_us_per_op": 0.847
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 2,
+      "total_ops": 300000,
+      "seconds": 0.164251,
+      "avg_us_per_op": 0.548
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 4,
+      "total_ops": 600000,
+      "seconds": 0.477296,
+      "avg_us_per_op": 0.795
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 8,
+      "total_ops": 1200000,
+      "seconds": 1.406318,
+      "avg_us_per_op": 1.172
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 16,
+      "total_ops": 2400000,
+      "seconds": 5.246837,
+      "avg_us_per_op": 2.186
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 32,
+      "total_ops": 4800000,
+      "seconds": 8.886992,
+      "avg_us_per_op": 1.851
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 2,
+      "total_ops": 300000,
+      "seconds": 0.154626,
+      "avg_us_per_op": 0.515
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 4,
+      "total_ops": 600000,
+      "seconds": 0.461044,
+      "avg_us_per_op": 0.768
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 8,
+      "total_ops": 1200000,
+      "seconds": 1.266656,
+      "avg_us_per_op": 1.056
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 16,
+      "total_ops": 2400000,
+      "seconds": 4.298136,
+      "avg_us_per_op": 1.791
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 32,
+      "total_ops": 4800000,
+      "seconds": 9.10706,
+      "avg_us_per_op": 1.897
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 2,
+      "total_ops": 300000,
+      "seconds": 0.250421,
+      "avg_us_per_op": 0.835
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 4,
+      "total_ops": 600000,
+      "seconds": 0.375242,
+      "avg_us_per_op": 0.625
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 8,
+      "total_ops": 1200000,
+      "seconds": 0.435549,
+      "avg_us_per_op": 0.363
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 16,
+      "total_ops": 2400000,
+      "seconds": 1.858267,
+      "avg_us_per_op": 0.774
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 32,
+      "total_ops": 4800000,
+      "seconds": 4.676979,
+      "avg_us_per_op": 0.974
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 2,
+      "total_ops": 300000,
+      "seconds": 0.340402,
+      "avg_us_per_op": 1.135
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 4,
+      "total_ops": 600000,
+      "seconds": 0.496163,
+      "avg_us_per_op": 0.827
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 8,
+      "total_ops": 1200000,
+      "seconds": 0.616716,
+      "avg_us_per_op": 0.514
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 16,
+      "total_ops": 2400000,
+      "seconds": 2.840174,
+      "avg_us_per_op": 1.183
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 32,
+      "total_ops": 4800000,
+      "seconds": 7.961787,
+      "avg_us_per_op": 1.659
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 2,
+      "total_ops": 300000,
+      "seconds": 0.312655,
+      "avg_us_per_op": 1.042
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 4,
+      "total_ops": 600000,
+      "seconds": 0.519443,
+      "avg_us_per_op": 0.866
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 8,
+      "total_ops": 1200000,
+      "seconds": 0.649234,
+      "avg_us_per_op": 0.541
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 16,
+      "total_ops": 2400000,
+      "seconds": 3.118919,
+      "avg_us_per_op": 1.3
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 32,
+      "total_ops": 4800000,
+      "seconds": 8.158533,
+      "avg_us_per_op": 1.7
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 2,
+      "total_ops": 300000,
+      "seconds": 0.164251,
+      "avg_us_per_op": 0.548
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 2,
+      "total_ops": 300000,
+      "seconds": 0.340402,
+      "avg_us_per_op": 1.135
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 4,
+      "total_ops": 600000,
+      "seconds": 0.477296,
+      "avg_us_per_op": 0.795
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 4,
+      "total_ops": 600000,
+      "seconds": 0.496163,
+      "avg_us_per_op": 0.827
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 8,
+      "total_ops": 1200000,
+      "seconds": 1.406318,
+      "avg_us_per_op": 1.172
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 8,
+      "total_ops": 1200000,
+      "seconds": 0.616716,
+      "avg_us_per_op": 0.514
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 16,
+      "total_ops": 2400000,
+      "seconds": 5.246837,
+      "avg_us_per_op": 2.186
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 16,
+      "total_ops": 2400000,
+      "seconds": 2.840174,
+      "avg_us_per_op": 1.183
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 32,
+      "total_ops": 4800000,
+      "seconds": 8.886992,
+      "avg_us_per_op": 1.851
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "balanced_34_33_33",
+      "domains": 32,
+      "total_ops": 4800000,
+      "seconds": 7.961787,
+      "avg_us_per_op": 1.659
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 2,
+      "total_ops": 300000,
+      "seconds": 0.168319,
+      "avg_us_per_op": 0.561
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 2,
+      "total_ops": 300000,
+      "seconds": 0.250421,
+      "avg_us_per_op": 0.835
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 4,
+      "total_ops": 600000,
+      "seconds": 0.367789,
+      "avg_us_per_op": 0.613
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 4,
+      "total_ops": 600000,
+      "seconds": 0.375242,
+      "avg_us_per_op": 0.625
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 8,
+      "total_ops": 1200000,
+      "seconds": 0.821653,
+      "avg_us_per_op": 0.685
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 8,
+      "total_ops": 1200000,
+      "seconds": 0.435549,
+      "avg_us_per_op": 0.363
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 16,
+      "total_ops": 2400000,
+      "seconds": 1.901315,
+      "avg_us_per_op": 0.792
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 16,
+      "total_ops": 2400000,
+      "seconds": 1.858267,
+      "avg_us_per_op": 0.774
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 32,
+      "total_ops": 4800000,
+      "seconds": 4.066726,
+      "avg_us_per_op": 0.847
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "search_100",
+      "domains": 32,
+      "total_ops": 4800000,
+      "seconds": 4.676979,
+      "avg_us_per_op": 0.974
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 2,
+      "total_ops": 300000,
+      "seconds": 0.154626,
+      "avg_us_per_op": 0.515
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 2,
+      "total_ops": 300000,
+      "seconds": 0.312655,
+      "avg_us_per_op": 1.042
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 4,
+      "total_ops": 600000,
+      "seconds": 0.461044,
+      "avg_us_per_op": 0.768
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 4,
+      "total_ops": 600000,
+      "seconds": 0.519443,
+      "avg_us_per_op": 0.866
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 8,
+      "total_ops": 1200000,
+      "seconds": 1.266656,
+      "avg_us_per_op": 1.056
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 8,
+      "total_ops": 1200000,
+      "seconds": 0.649234,
+      "avg_us_per_op": 0.541
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 16,
+      "total_ops": 2400000,
+      "seconds": 4.298136,
+      "avg_us_per_op": 1.791
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 16,
+      "total_ops": 2400000,
+      "seconds": 3.118919,
+      "avg_us_per_op": 1.3
+    },
+    {
+      "impl_name": "coarse_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 32,
+      "total_ops": 4800000,
+      "seconds": 9.10706,
+      "avg_us_per_op": 1.897
+    },
+    {
+      "impl_name": "mcas_doubly_linked_list",
+      "scenario_name": "update_heavy_45_45_10",
+      "domains": 32,
+      "total_ops": 4800000,
+      "seconds": 8.158533,
+      "avg_us_per_op": 1.7
+    }
+  ]
+}

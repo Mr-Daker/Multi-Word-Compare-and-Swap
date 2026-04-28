@@ -1,0 +1,7 @@
+{
+  "generated_at": "20260427_215943",
+  "command": "opam exec -- dune exec ./benchmarking/benchmark_linked_list.exe",
+  "returncode": 0,
+  "row_count": 60,
+  "raw_log": "presentation/data/benchmark_linked_list_raw_latest.txt"
+}

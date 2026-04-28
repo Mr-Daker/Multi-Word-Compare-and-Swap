@@ -13,6 +13,16 @@
  (libraries mcas_snapshot_volatile qcheck-lin.domain qcheck-core))
 
 (executable
+ (name qcheck_lin_lockfree_linked_list)
+ (modules qcheck_lin_lockfree_linked_list)
+ (libraries lockfree_linked_list qcheck-lin.domain qcheck-core))
+
+(executable
+ (name qcheck_lin_mcas_lockfree_linked_list)
+ (modules qcheck_lin_mcas_lockfree_linked_list)
+ (libraries mcas_lockfree_linked_list qcheck-lin.domain qcheck-core))
+
+(executable
  (name qcheck_lin_stm_volatile)
  (modules qcheck_lin_stm_volatile)
  (libraries stm_volatile qcheck-lin.domain qcheck-core))
