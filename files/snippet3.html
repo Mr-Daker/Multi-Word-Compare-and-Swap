@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCAS: The Helping Protocol</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+        }
+
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+
+        .helping-box {
+            background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+            border: 1px solid #059669;
+        }
+
+        .code-glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen p-4 overflow-hidden">
+
+    <div
+        class="flex flex-col w-full max-w-6xl aspect-[16/9] bg-slate-950 text-slate-200 p-10 rounded-2xl border border-slate-800 shadow-2xl relative">
+
+        <!-- Header -->
+        <div class="flex justify-between items-start border-b border-slate-800 pb-6 mb-6">
+            <div>
+                <h1 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3">
+                    <i data-lucide="handshake" class="text-emerald-400"></i>
+                    The Helping Protocol & Logical Values
+                </h1>
+                <p class="text-emerald-500/80 text-lg mt-1 font-medium">
+                    Ensuring Lock-Freedom through Cooperative Execution
+                </p>
+            </div>
+            <div class="flex gap-2">
+                <span
+                    class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-widest">Wait-Free
+                    Read</span>
+                <span
+                    class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded text-[10px] font-mono text-blue-400 font-bold uppercase tracking-widest">Lock-Free
+                    Write</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-12 gap-8 flex-grow">
+
+            <!-- Left: Logic Flow for Helping -->
+            <div class="col-span-5 flex flex-col gap-6">
+                <div class="helping-box rounded-xl p-6 shadow-2xl relative">
+                    <div class="absolute -top-3 -right-3 bg-emerald-500 text-slate-950 p-1.5 rounded-lg shadow-lg">
+                        <i data-lucide="refresh-cw" class="w-5 h-5 animate-spin-slow"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-emerald-50 text-center mb-6 uppercase tracking-wider">The "Help"
+                        Loop</h3>
+
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-center gap-4 bg-slate-950/40 p-3 rounded-lg border border-emerald-500/20">
+                            <div
+                                class="w-8 h-8 rounded bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold">
+                                A</div>
+                            <p class="text-xs text-slate-300">Thread encounters a <strong>WordDescriptor</strong> in a
+                                cell.</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <i data-lucide="arrow-down" class="text-emerald-500 w-5 h-5"></i>
+                        </div>
+                        <div
+                            class="flex items-center gap-4 bg-slate-950/40 p-3 rounded-lg border border-emerald-500/20">
+                            <div
+                                class="w-8 h-8 rounded bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold">
+                                B</div>
+                            <p class="text-xs text-slate-300">Thread follows <code>parent</code> link to find the
+                                <strong>MCAS status</strong>.</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <i data-lucide="arrow-down" class="text-emerald-500 w-5 h-5"></i>
+                        </div>
+                        <div
+                            class="flex items-center gap-4 bg-slate-950/40 p-3 rounded-lg border border-emerald-500/20">
+                            <div
+                                class="w-8 h-8 rounded bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold">
+                                C</div>
+                            <p class="text-xs text-slate-300 italic font-medium">Thread helps finish the foreign
+                                operation before continuing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-5 border-l-4 border-blue-500 bg-blue-500/5 rounded-r-xl">
+                    <h4 class="text-sm font-bold text-blue-400 mb-2">The "Logical Value" Rule</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        A memory location might physically contain a <strong>Descriptor</strong>, but logically it
+                        represents a value.
+                        If the status is <code>Succeeded</code>, the logical value is <code>new_value</code>; otherwise,
+                        it's <code>old_value</code>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right: Code Implementation -->
+            <div class="col-span-7 flex flex-col gap-4">
+                <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden code-glow h-full">
+                    <div class="bg-slate-800/50 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="code-2" class="w-4 h-4 text-emerald-400"></i>
+                            <span class="text-xs font-mono text-slate-400">helping_protocol.ml</span>
+                        </div>
+                        <span class="text-[10px] text-slate-500 font-mono">OCaml 5.0 Atomics</span>
+                    </div>
+                    <div class="p-6 font-mono text-[13px] leading-relaxed">
+                        <span class="text-slate-500 italic">(* Resolving what a cell logically holds *)</span>
+                        <span class="text-purple-400 font-bold italic">let</span> <span
+                            class="text-emerald-300">logical_value</span> wd =
+                        <span class="text-purple-400 font-bold italic">if</span> Atomic.get wd.parent.status = <span
+                            class="text-orange-400">Succeeded</span>
+                        <span class="text-purple-400 font-bold italic">then</span> wd.new_value <span
+                            class="text-slate-500 italic">(* MCAS committed *)</span>
+                        <span class="text-purple-400 font-bold italic">else</span> wd.old_value <span
+                            class="text-slate-500 italic">(* MCAS failed/pending *)</span>
+
+                        <span class="text-purple-400 font-bold italic">let rec</span> <span
+                            class="text-emerald-300">read_internal</span> addr =
+                        <span class="text-purple-400 font-bold italic">match</span> Atomic.get addr <span
+                            class="text-purple-400 font-bold italic">with</span>
+                        | <span class="text-blue-300">Value</span> v -> v
+                        | <span class="text-yellow-200">Word</span> wd ->
+                        <span class="text-slate-500 italic">(* Foreign MCAS found, must help *)</span>
+                        <span class="text-purple-400 font-bold italic">if</span> Atomic.get wd.parent.status = <span
+                            class="text-orange-400">Active</span>
+                        <span class="text-purple-400 font-bold italic">then</span> (help wd.parent; read_internal addr)
+                        <span class="text-purple-400 font-bold italic">else</span> logical_value wd
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Insights -->
+        <div class="mt-8 grid grid-cols-3 gap-6">
+            <div class="flex gap-3">
+                <div class="p-2 bg-slate-900 rounded-lg"><i data-lucide="zap" class="text-yellow-500 w-5 h-5"></i></div>
+                <div>
+                    <h5 class="text-xs font-bold text-white uppercase">Progress Guarantee</h5>
+                    <p class="text-[10px] text-slate-500">System-wide progress is guaranteed because threads cooperate
+                        rather than block.</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <div class="p-2 bg-slate-900 rounded-lg"><i data-lucide="shield-check"
+                        class="text-emerald-500 w-5 h-5"></i></div>
+                <div>
+                    <h5 class="text-xs font-bold text-white uppercase">Linearizability</h5>
+                    <p class="text-[10px] text-slate-500">The <code>read</code> operation appears atomic because it
+                        resolves the descriptor state immediately.</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <div class="p-2 bg-slate-900 rounded-lg"><i data-lucide="layers" class="text-blue-500 w-5 h-5"></i>
+                </div>
+                <div>
+                    <h5 class="text-xs font-bold text-white uppercase">Recursion Safety</h5>
+                    <p class="text-[10px] text-slate-500">Helping is recursive but finite, bounded by the number of
+                        active operations.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div
+            class="mt-auto pt-4 flex justify-between text-[10px] font-mono text-slate-600 tracking-widest uppercase font-bold border-t border-slate-800/30">
+            <div class="flex gap-4">
+                <span>MCAS ARCHITECTURE</span>
+                <span class="text-slate-800">|</span>
+                <span>HELPING & LOGICAL VIEW</span>
+            </div>
+            <span>SLIDE 03</span>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

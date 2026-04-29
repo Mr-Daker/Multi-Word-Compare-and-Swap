@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; font-family: 'Courier New', monospace; padding: 0; }
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 860px;
+  }
+  .header {
+    background: #21262d;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #30363d;
+  }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.r { background: #ff5f56; }
+  .dot.y { background: #ffbd2e; }
+  .dot.g { background: #27c93f; }
+  .filename { color: #8b949e; font-size: 13px; font-family: 'Courier New', monospace; }
+  .badge {
+    margin-left: auto;
+    background: #1a3a3322;
+    border: 1px solid #2ea04355;
+    color: #56d364;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: sans-serif;
+  }
+  .label {
+    background: #141f14;
+    border-left: 3px solid #56d364;
+    color: #56d364;
+    font-size: 11px;
+    padding: 6px 16px;
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  pre {
+    padding: 22px 24px 24px;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: #e6edf3;
+  }
+  .kw  { color: #ff7b72; }
+  .ty  { color: #ffa657; }
+  .co  { color: #8b949e; font-style: italic; }
+  .fi  { color: #79c0ff; }
+  .fn  { color: #d2a8ff; }
+  .op  { color: #ff7b72; }
+  .bo  { color: #ffa657; }
+  .rec { color: #ffa657; }
+  .st  { color: #a5d6ff; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+    <span class="filename">mcas_snapshot_volatile.ml</span>
+    <span class="badge">Atomic Snapshot</span>
+  </div>
+  <div class="label">scan — atomic snapshot via MCAS validation</div>
+  <pre><span class="kw">let rec</span> <span class="fn">scan</span> t <span class="op">=</span>
+  <span class="co">(* Step 1: collect a speculative snapshot *)</span>
+  <span class="kw">let</span> snapshot <span class="op">=</span> <span class="ty">Array</span>.map <span class="ty">Mcas_volatile</span>.get t.slots <span class="kw">in</span>
+
+  <span class="co">(* Step 2: build identity CAS ops — expect same value, write same value *)</span>
+  <span class="kw">let</span> ops <span class="op">=</span>
+    <span class="ty">Array</span>.to_list (
+      <span class="ty">Array</span>.mapi (<span class="kw">fun</span> i value <span class="op">-&gt;</span>
+        <span class="ty">Mcas_volatile</span>.<span class="fn">make_cas</span> t.slots.(i)
+          <span class="op">~</span>expected<span class="op">:</span>value <span class="op">~</span>desired<span class="op">:</span>value)
+        snapshot)
+  <span class="kw">in</span>
+
+  <span class="co">(* Step 3: MCAS succeeds iff all slots still hold snapshot values *)</span>
+  <span class="kw">if</span> <span class="ty">Mcas_volatile</span>.<span class="fn">mcas</span> ops
+  <span class="kw">then</span> snapshot    <span class="co">(* consistent — return it *)</span>
+  <span class="kw">else</span> <span class="fn">scan</span> t      <span class="co">(* racing update detected — retry *)</span>
+
+<span class="kw">let</span> <span class="fn">update</span> t i v <span class="op">=</span>
+  <span class="fn">check_index</span> t i<span class="op">;</span>
+  <span class="kw">let rec</span> <span class="fn">retry</span> () <span class="op">=</span>
+    <span class="kw">let</span> cur <span class="op">=</span> <span class="ty">Mcas_volatile</span>.get t.slots.(i) <span class="kw">in</span>
+    <span class="kw">let</span> op <span class="op">=</span> <span class="ty">Mcas_volatile</span>.<span class="fn">make_cas</span> t.slots.(i)
+               <span class="op">~</span>expected<span class="op">:</span>cur <span class="op">~</span>desired<span class="op">:</span>v <span class="kw">in</span>
+    <span class="kw">if not</span> (<span class="ty">Mcas_volatile</span>.<span class="fn">mcas</span> [op]) <span class="kw">then</span> <span class="fn">retry</span> ()
+  <span class="kw">in</span> <span class="fn">retry</span> ()</pre>
+</div>
+</body>
+</html>

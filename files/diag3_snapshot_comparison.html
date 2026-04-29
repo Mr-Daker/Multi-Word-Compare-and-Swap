@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; }
+  .wrap { background: #161b22; border: 1px solid #30363d; border-radius: 12px; overflow: hidden; width: 900px; }
+  .header {
+    background: #21262d;
+    border-bottom: 1px solid #30363d;
+    padding: 14px 20px;
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #e6edf3; font-size: 14px; font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <span style="background:#f0883e;border-radius:4px;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;color:white;">⚖</span>
+    Fig 3 — Snapshot Algorithm Comparison: Double-Collect vs MCAS
+  </div>
+  <svg width="900" height="480" xmlns="http://www.w3.org/2000/svg" style="background:#161b22">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <!-- Column labels -->
+    <rect x="30" y="20" width="390" height="34" rx="7" fill="#1a1f2e" stroke="#79c0ff" stroke-width="1.5"/>
+    <text x="225" y="43" text-anchor="middle" fill="#79c0ff" font-family="'Segoe UI',sans-serif" font-size="13" font-weight="600">Assignment 2 — Double-Collect</text>
+
+    <rect x="480" y="20" width="390" height="34" rx="7" fill="#1e2e1a" stroke="#3fb950" stroke-width="1.5"/>
+    <text x="675" y="43" text-anchor="middle" fill="#3fb950" font-family="'Segoe UI',sans-serif" font-size="13" font-weight="600">MCAS-Based Snapshot</text>
+
+    <!-- Divider -->
+    <line x1="450" y1="15" x2="450" y2="470" stroke="#30363d" stroke-width="1.5"/>
+
+    <!-- ====== DOUBLE COLLECT STEPS ====== -->
+    <!-- Step 1 -->
+    <rect x="40" y="80" width="370" height="48" rx="7" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <text x="60" y="100" fill="#ffa657" font-family="'Courier New',monospace" font-size="12" font-weight="bold">collect₁</text>
+    <text x="60" y="118" fill="#8b949e" font-family="'Segoe UI',sans-serif" font-size="12">Read all N slots (timestamps + values)</text>
+
+    <line x1="225" y1="128" x2="225" y2="148" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <!-- Step 2 -->
+    <rect x="40" y="148" width="370" height="48" rx="7" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <text x="60" y="168" fill="#ffa657" font-family="'Courier New',monospace" font-size="12" font-weight="bold">collect₂</text>
+    <text x="60" y="186" fill="#8b949e" font-family="'Segoe UI',sans-serif" font-size="12">Read all N slots again</text>
+
+    <line x1="225" y1="196" x2="225" y2="216" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <!-- Decision diamond -->
+    <polygon points="225,216 290,245 225,274 160,245" fill="#1a1f2e" stroke="#79c0ff" stroke-width="1.5"/>
+    <text x="225" y="243" text-anchor="middle" fill="#79c0ff" font-family="'Segoe UI',sans-serif" font-size="11">equal?</text>
+    <text x="225" y="257" text-anchor="middle" fill="#79c0ff" font-family="'Segoe UI',sans-serif" font-size="11">timestamps</text>
+
+    <!-- Yes path -->
+    <line x1="225" y1="274" x2="225" y2="314" stroke="#3fb950" stroke-width="1.5" marker-end="url(#arr)"/>
+    <text x="232" y="298" fill="#3fb950" font-family="'Segoe UI',sans-serif" font-size="11">yes</text>
+    <rect x="100" y="314" width="250" height="36" rx="6" fill="#0d2a18" stroke="#3fb950" stroke-width="1"/>
+    <text x="225" y="337" text-anchor="middle" fill="#3fb950" font-family="'Segoe UI',sans-serif" font-size="12">Return collect₁ as snapshot</text>
+
+    <!-- No path -->
+    <line x1="160" y1="245" x2="40" y2="245" stroke="#ff7b72" stroke-width="1.5" marker-end="url(#arr)"/>
+    <text x="70" y="235" fill="#ff7b72" font-family="'Segoe UI',sans-serif" font-size="11">no → retry</text>
+    <path d="M40 245 Q30 245 30 180 Q30 148 39 148" fill="none" stroke="#ff7b72" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+
+    <!-- Complexity note -->
+    <rect x="40" y="370" width="370" height="58" rx="7" fill="#2a1a0a" stroke="#ffa657" stroke-width="1"/>
+    <text x="225" y="393" text-anchor="middle" fill="#ffa657" font-family="'Segoe UI',sans-serif" font-size="12" font-weight="600">Complexity</text>
+    <text x="225" y="412" text-anchor="middle" fill="#8b949e" font-family="'Segoe UI',sans-serif" font-size="11">O(N²) reads worst-case; requires</text>
+    <text x="225" y="428" text-anchor="middle" fill="#8b949e" font-family="'Segoe UI',sans-serif" font-size="11">separate timestamp per slot</text>
+
+    <!-- ====== MCAS STEPS ====== -->
+    <!-- Step 1 -->
+    <rect x="460" y="80" width="410" height="48" rx="7" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <text x="480" y="100" fill="#56d364" font-family="'Courier New',monospace" font-size="12" font-weight="bold">speculative read</text>
+    <text x="480" y="118" fill="#8b949e" font-family="'Segoe UI',sans-serif" font-size="12">Array.map Mcas_volatile.get slots</text>
+
+    <line x1="665" y1="128" x2="665" y2="148" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <!-- Step 2 -->
+    <rect x="460" y="148" width="410" height="58" rx="7" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <text x="480" y="168" fill="#56d364" font-family="'Courier New',monospace" font-size="12" font-weight="bold">build identity ops</text>
+    <text x="480" y="186" fill="#8b949e" font-family="'Segoe UI',sans-serif" font-size="12">make_cas slot ~expected:v ~desired:v</text>
+    <text x="480" y="202" fill="#555" font-family="'Segoe UI',sans-serif" font-size="11">for each slot i</text>
+
+    <line x1="665" y1="206" x2="665" y2="226" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <!-- Step 3 -->
+    <rect x="460" y="226" width="410" height="48" rx="7" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <text x="480" y="246" fill="#56d364" font-family="'Courier New',monospace" font-size="12" font-weight="bold">Mcas_volatile.mcas ops</text>
+    <text x="480" y="264" fill="#8b949e" font-family="'Segoe UI',sans-serif" font-size="12">validates all N slots atomically</text>
+
+    <line x1="665" y1="274" x2="665" y2="294" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <!-- Decision -->
+    <polygon points="665,294 730,323 665,352 600,323" fill="#1e2e1a" stroke="#3fb950" stroke-width="1.5"/>
+    <text x="665" y="321" text-anchor="middle" fill="#3fb950" font-family="'Segoe UI',sans-serif" font-size="11">mcas</text>
+    <text x="665" y="335" text-anchor="middle" fill="#3fb950" font-family="'Segoe UI',sans-serif" font-size="11">true?</text>
+
+    <!-- Yes -->
+    <line x1="665" y1="352" x2="665" y2="386" stroke="#3fb950" stroke-width="1.5" marker-end="url(#arr)"/>
+    <text x="672" y="372" fill="#3fb950" font-family="'Segoe UI',sans-serif" font-size="11">yes</text>
+    <rect x="540" y="386" width="250" height="30" rx="6" fill="#0d2a18" stroke="#3fb950" stroke-width="1"/>
+    <text x="665" y="406" text-anchor="middle" fill="#3fb950" font-family="'Segoe UI',sans-serif" font-size="12">Return snapshot</text>
+
+    <!-- No -->
+    <line x1="600" y1="323" x2="462" y2="323" stroke="#ff7b72" stroke-width="1.5" marker-end="url(#arr)"/>
+    <text x="508" y="313" fill="#ff7b72" font-family="'Segoe UI',sans-serif" font-size="11">no → scan t</text>
+
+    <!-- Complexity note -->
+    <rect x="460" y="428" width="410" height="40" rx="7" fill="#0d2a18" stroke="#3fb950" stroke-width="1"/>
+    <text x="665" y="448" text-anchor="middle" fill="#3fb950" font-family="'Segoe UI',sans-serif" font-size="12" font-weight="600">O(N) reads per attempt — no timestamps needed</text>
+    <text x="665" y="463" text-anchor="middle" fill="#8b949e" font-family="'Segoe UI',sans-serif" font-size="11">MCAS descriptor encodes consistency check</text>
+  </svg>
+</div>
+</body>
+</html>

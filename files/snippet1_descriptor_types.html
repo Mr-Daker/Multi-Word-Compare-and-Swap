@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; font-family: 'Courier New', monospace; padding: 0; }
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 860px;
+  }
+  .header {
+    background: #21262d;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #30363d;
+  }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.r { background: #ff5f56; }
+  .dot.y { background: #ffbd2e; }
+  .dot.g { background: #27c93f; }
+  .filename {
+    color: #8b949e;
+    font-size: 13px;
+    font-family: 'Courier New', monospace;
+  }
+  .badge {
+    margin-left: auto;
+    background: #1f6feb22;
+    border: 1px solid #1f6feb55;
+    color: #79c0ff;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: sans-serif;
+  }
+  .label {
+    background: #1e3a1e;
+    border-left: 3px solid #3fb950;
+    color: #3fb950;
+    font-size: 11px;
+    padding: 6px 16px;
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  pre {
+    padding: 22px 24px 24px;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: #e6edf3;
+    overflow: hidden;
+  }
+  .kw  { color: #ff7b72; }
+  .ty  { color: #ffa657; }
+  .co  { color: #8b949e; font-style: italic; }
+  .fi  { color: #79c0ff; }
+  .st  { color: #a5d6ff; }
+  .va  { color: #e6edf3; }
+  .op  { color: #ff7b72; }
+  .rec { color: #d2a8ff; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+    <span class="filename">mcas_volatile.ml</span>
+    <span class="badge">Descriptor Types</span>
+  </div>
+  <div class="label">Core data types — MCAS descriptor encoding</div>
+  <pre><span class="kw">type</span> <span class="ty">status</span> <span class="op">=</span>
+  <span class="op">|</span> <span class="rec">Active</span>
+  <span class="op">|</span> <span class="rec">Successful</span>
+  <span class="op">|</span> <span class="rec">Failed</span>
+
+<span class="kw">type</span> <span class="ty">state</span> <span class="op">=</span>
+  <span class="op">|</span> <span class="rec">Value</span> <span class="kw">of</span> <span class="ty">Obj.t</span>
+  <span class="op">|</span> <span class="rec">Word</span>  <span class="kw">of</span> <span class="ty">word_desc</span>
+
+<span class="kw">and</span> <span class="ty">word_desc</span> <span class="op">= {</span>
+  <span class="fi">address</span>   <span class="op">:</span> <span class="ty">cell</span><span class="op">;</span>          <span class="co">(* target memory location *)</span>
+  <span class="fi">old_value</span> <span class="op">:</span> <span class="ty">Obj.t</span><span class="op">;</span>
+  <span class="fi">new_value</span> <span class="op">:</span> <span class="ty">Obj.t</span><span class="op">;</span>
+  <span class="fi">parent</span>    <span class="op">:</span> <span class="ty">mcas_desc</span><span class="op">;</span>    <span class="co">(* back-pointer to owning MCAS *)</span>
+<span class="op">}</span>
+
+<span class="kw">and</span> <span class="ty">mcas_desc</span> <span class="op">= {</span>
+  <span class="fi">status</span>  <span class="op">:</span> <span class="ty">status Atomic.t</span><span class="op">;</span>   <span class="co">(* single-word CAS target *)</span>
+  <span class="fi">words</span>   <span class="op">:</span> <span class="ty">word_desc array</span><span class="op">;</span>
+  <span class="fi">retired</span> <span class="op">:</span> <span class="ty">bool Atomic.t</span><span class="op">;</span>
+<span class="op">}</span>
+
+<span class="kw">and</span> <span class="ty">cell</span> <span class="op">=</span> <span class="ty">state Atomic.t</span>     <span class="co">(* each ref slot holds Value or Word *)</span>
+
+<span class="kw">type</span> <span class="st">'a</span> <span class="ty">ref</span> <span class="op">= {</span> <span class="fi">id</span> <span class="op">:</span> <span class="ty">int</span><span class="op">;</span> <span class="fi">cell</span> <span class="op">:</span> <span class="ty">cell</span> <span class="op">}</span></pre>
+</div>
+</body>
+</html>

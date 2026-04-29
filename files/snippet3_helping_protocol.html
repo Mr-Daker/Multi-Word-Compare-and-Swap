@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; font-family: 'Courier New', monospace; padding: 0; }
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 860px;
+  }
+  .header {
+    background: #21262d;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #30363d;
+  }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.r { background: #ff5f56; }
+  .dot.y { background: #ffbd2e; }
+  .dot.g { background: #27c93f; }
+  .filename { color: #8b949e; font-size: 13px; font-family: 'Courier New', monospace; }
+  .badge {
+    margin-left: auto;
+    background: #26391822;
+    border: 1px solid #3fb95055;
+    color: #3fb950;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: sans-serif;
+  }
+  .label {
+    background: #231e18;
+    border-left: 3px solid #ffa657;
+    color: #ffa657;
+    font-size: 11px;
+    padding: 6px 16px;
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  pre {
+    padding: 22px 24px 24px;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: #e6edf3;
+  }
+  .kw  { color: #ff7b72; }
+  .ty  { color: #ffa657; }
+  .co  { color: #8b949e; font-style: italic; }
+  .fi  { color: #79c0ff; }
+  .fn  { color: #d2a8ff; }
+  .op  { color: #ff7b72; }
+  .bo  { color: #ffa657; }
+  .rec { color: #ffa657; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+    <span class="filename">mcas_volatile.ml</span>
+    <span class="badge">Helping Protocol</span>
+  </div>
+  <div class="label">read_internal — threads help each other complete</div>
+  <pre><span class="kw">let rec</span> <span class="fn">read_internal</span> addr self <span class="op">=</span>
+  <span class="kw">let</span> content <span class="op">=</span> <span class="ty">Atomic</span>.get addr <span class="kw">in</span>
+  <span class="kw">match</span> content <span class="kw">with</span>
+  <span class="op">|</span> <span class="rec">Value</span> value <span class="op">-&gt;</span>
+      (content, value)          <span class="co">(* clean read — return immediately *)</span>
+
+  <span class="op">|</span> <span class="rec">Word</span> wd <span class="op">-&gt;</span>
+      <span class="kw">let</span> parent <span class="op">=</span> wd.parent <span class="kw">in</span>
+      <span class="kw">let</span> not_self <span class="op">=</span> <span class="kw">match</span> self <span class="kw">with</span>
+        <span class="op">|</span> <span class="rec">Some</span> d <span class="op">-&gt;</span> <span class="kw">not</span> (<span class="fn">same_desc</span> d parent)
+        <span class="op">|</span> <span class="rec">None</span>   <span class="op">-&gt;</span> <span class="bo">true</span>
+      <span class="kw">in</span>
+      <span class="co">(* Help foreign in-progress MCAS before reading *)</span>
+      <span class="kw">if</span> not_self <span class="op">&amp;&amp;</span> <span class="ty">Atomic</span>.get parent.status <span class="op">=</span> <span class="rec">Active</span>
+      <span class="kw">then</span> (<span class="fn">ignore</span> (<span class="fn">mcas_desc</span> parent)<span class="op">;</span> <span class="fn">read_internal</span> addr self)
+      <span class="kw">else</span>
+        (content, <span class="fn">logical_value</span> wd)  <span class="co">(* return logical value *)</span>
+
+<span class="kw">let</span> <span class="fn">logical_value</span> wd <span class="op">=</span>
+  <span class="kw">if</span> <span class="fn">is_successful</span> wd.parent
+  <span class="kw">then</span> wd.new_value   <span class="co">(* MCAS committed — expose new value *)</span>
+  <span class="kw">else</span> wd.old_value   <span class="co">(* MCAS failed  — expose old value  *)</span></pre>
+</div>
+</body>
+</html>
