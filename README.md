@@ -1,57 +1,185 @@
-# Project 5: Multi-Word Compare-and-Swap (MCAS) in OCaml 5
+# Project 5: Multi-Word Compare-and-Swap in OCaml 5
 
-## Project Agenda and Overview
+An implementation of software Multi-Word Compare-and-Swap (MCAS) in OCaml 5, together with atomic snapshot objects, linked-list set variants, linearizability tests, ThreadSanitizer stress tests, and benchmarking code.
 
-This project explores the implementation and application of a software-based Multi-Word Compare-and-Swap (MCAS) primitive in OCaml 5. Standard hardware and the OCaml 5 `Atomic` module only provide single-word CAS operations. However, many lock-free data structures require atomically updating multiple independent memory locations simultaneously.
+The project studies how far single-word CAS from OCaml 5's `Atomic` module can be extended into a practical multi-word synchronization primitive, and what performance trade-offs appear when that primitive is used inside larger concurrent data structures.
 
-To bridge this gap, this project implements a software MCAS built on top of single-word CAS using descriptor-based helping mechanisms, specifically following the Harris-Fraser-Pratt algorithm.
+Project artifacts:
 
-The primary research question this project seeks to answer is:
-**Does MCAS provide enough expressive power to meaningfully simplify the implementation of an atomic snapshot object, and what is the performance cost of the software MCAS layer?**
-
-### Core Objectives
-
-1. **Implement MCAS:** Develop the Harris-Fraser-Pratt MCAS algorithm in OCaml 5, properly handling descriptor objects and concurrent thread helping.
-2. **Apply to Data Structures:** Utilize the MCAS primitive to construct a lock-free atomic snapshot object.
-3. **Verify Linearizability:** Rigorously test the core MCAS implementation and the new atomic snapshot using `QCheck-Lin` to ensure correct linearizable behavior under concurrent execution.
-4. **Benchmark Performance:** Compare the throughput of the MCAS-based snapshot against the double-collect implementation from Assignment 2 across varying thread counts (2-8) and update/scan ratios.
-
----
+- [Project report](attachments/project_report.pdf)
+- [Slides](attachments/slides.pdf)
 
 ## Repository Structure
 
-The project is organized into distinct modules separating the core synchronization primitives, the data structure implementations, and the verification suites.
+```text
+.
+├── volatile/              Core volatile MCAS implementation
+│   ├── mcas_volatile.ml   Multi-word CAS with descriptor-based helping
+│   └── dune               Library definition
+│
+├── snapshot/              Atomic snapshot implementations
+│   ├── snapshot.ml        Baseline snapshot implementation
+│   ├── mcas_snapshot_volatile.ml
+│   │                      Snapshot built on top of volatile MCAS
+│   └── dune
+│
+├── linked_list/           Sorted linked-list set implementations
+│   ├── lockfree_linked_list.ml
+│   │                      Single-word CAS based linked-list set
+│   ├── mcas_lockfree_linked_list.ml
+│   │                      MCAS-based linked-list set
+│   └── dune
+│
+├── doubly_linked_list/    Doubly-linked-list set implementations
+│   ├── coarse_doubly_linked_list.ml
+│   │                      Mutex-based baseline implementation
+│   ├── mcas_doubly_linked_list.ml
+│   │                      MCAS-based implementation
+│   └── dune
+│
+├── stm/                   STM-style snapshot variants and tests
+│   ├── stm_volatile.ml    STM-like volatile register abstraction
+│   ├── stm_snapshot.ml    Snapshot built on STM-style registers
+│   ├── qcheck_stm_snapshot.ml
+│   │                      QCheck-STM tests for snapshot behavior
+│   ├── qcheck_stm_volatile.ml
+│   │                      QCheck-STM tests for STM-style registers
+│   └── dune
+│
+├── qlin/                  QCheck-Lin linearizability tests
+│   ├── qcheck_lin_mcas.ml
+│   ├── qcheck_lin_snapshot.ml
+│   ├── qcheck_lin_lockfree_linked_list.ml
+│   ├── qcheck_lin_mcas_lockfree_linked_list.ml
+│   ├── qcheck_lin_stm_volatile.ml
+│   ├── qcheck_lin_stm_snapshot.ml
+│   └── dune
+│
+├── benchmarking/          Benchmark executables and generated plots
+│   ├── benchmark.ml       Snapshot benchmark
+│   ├── benchmark_linked_list.ml
+│   │                      CAS vs MCAS linked-list benchmark
+│   ├── benchmark_doubly_linked_list.ml
+│   │                      Mutex vs MCAS doubly-linked-list benchmark
+│   ├── results/           Saved benchmark plots
+│   └── dune
+│
+├── tsan/                  ThreadSanitizer stress tests
+│   ├── tsan_volatile.ml
+│   ├── tsan_snapshot.ml
+│   └── dune
+│
+├── presentation/          Plotting scripts and presentation assets
+├── attachments/           Final report and slide deck copies
+├── Resources/             Reference papers and course report PDF
+├── Makefile               Build, test, benchmark, and TSan targets
+└── dune-project           Dune project configuration
+```
 
-### Core Algorithms
+Note: the `presentation/` folder contains presentation-generation assets and helper scripts. The main implementation and evaluation code lives in the folders listed above.
 
-- **`mcas.mli` / `mcas.ml`**: The core multi-word compare-and-swap implementation. This contains the internal state machine, descriptor types, the RDCSS (Restricted Double-Compare Single-Swap) logic, and the recursive helping mechanisms required by the Harris-Fraser-Pratt algorithm.
-- **`mcas_snapshot.mli` / `mcas_snapshot.ml`**: The new atomic snapshot implementation. This module leverages `mcas.ml` to achieve atomic scans and updates without relying on traditional double-collect loops or dirty bits.
-- **`snapshot.mli` / `snapshot.ml`**: The baseline double-collect atomic snapshot algorithm from Assignment 2. Retained here to serve as the control group for performance benchmarking.
+## Building
 
-### Testing and Verification
+Requires OCaml 5, `opam`, and Dune.
 
-- **`qcheck_lin_mcas.ml`**: Linearizability testing suite targeting the isolated `Mcas` module. Ensures that the descriptor installation and helping phases function correctly under high contention.
-- **`qcheck_lin_snapshot.ml`**: Linearizability testing suite for the `Mcas_snapshot` implementation. Ensures that concurrent updates and scans yield consistent, linearizable array states.
+Install dependencies in your active switch:
 
-### Benchmarking
+```bash
+opam install dune qcheck qcheck-core qcheck-lin qcheck-stm
+```
 
-- **`benchmark.ml`**: The performance evaluation harness. It spins up 2 to 8 OCaml 5 Domains, applying varying ratios of update and scan operations to both snapshot implementations, and measures operations per second (throughput).
-
-### Build System
-
-- **`Makefile`**: Exposes standard commands for building, testing, and benchmarking the project.
-- **`dune` / `dune-project`**: Standard OCaml Dune build system configurations defining library dependencies and executable targets.
-
----
-
-## Build and Execution Instructions
-
-Ensure you have OCaml 5.x and Dune installed, along with the necessary `qcheck-lin` packages.
-
-### Compilation
-
-To compile the entire project (libraries, tests, and benchmarks):
+Build everything:
 
 ```bash
 make build
 ```
+
+You can also invoke Dune directly:
+
+```bash
+dune build
+```
+
+## Running Tests
+
+Run the full verification pipeline exposed by the `Makefile`:
+
+```bash
+make test
+```
+
+Run individual QCheck-Lin tests:
+
+```bash
+make test-lin-mcas
+make test-lin-snapshot
+make test-lin-linked-list
+make test-lin-mcas-linked-list
+make test-lin-stm-snapshot
+```
+
+Run QCheck-STM snapshot tests:
+
+```bash
+make test-stm-snapshot
+```
+
+You can also run the executables directly with Dune:
+
+```bash
+dune exec ./qlin/qcheck_lin_mcas.exe
+dune exec ./qlin/qcheck_lin_snapshot.exe
+dune exec ./stm/qcheck_stm_snapshot.exe -- sequential
+dune exec ./stm/qcheck_stm_snapshot.exe -- concurrent
+```
+
+## Running Benchmarks
+
+Snapshot benchmark:
+
+```bash
+make benchmark
+```
+
+Linked-list benchmark:
+
+```bash
+make benchmark-linked-list
+```
+
+Doubly-linked-list benchmark:
+
+```bash
+make benchmark-doubly-linked-list
+```
+
+Equivalent direct Dune commands:
+
+```bash
+dune exec ./benchmarking/benchmark.exe
+dune exec ./benchmarking/benchmark_linked_list.exe
+dune exec ./benchmarking/benchmark_doubly_linked_list.exe
+```
+
+Saved benchmark plots are available under `benchmarking/results/`.
+
+## ThreadSanitizer
+
+Run all TSan stress tests:
+
+```bash
+make tsan
+```
+
+Run them individually:
+
+```bash
+make tsan-volatile
+make tsan-snapshot
+```
+
+## Main References
+
+- Timothy L. Harris, Keir Fraser, and Ian A. Pratt. A Practical Multi-Word Compare-and-Swap Operation.
+- Maurice Herlihy and Nir Shavit. The Art of Multiprocessor Programming.
+- Course and project reference material in `Resources/`.
