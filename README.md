@@ -8,7 +8,7 @@ Project artifacts:
 
 - [Project report](attachments/project_report.pdf)
 - [Slides](attachments/slides.pdf)
-- [Video](https://youtu.be/I7SW-X3gVQM)
+- [Video](https://drive.google.com/file/d/1gXvFEtO8WgPtiuIyE4g451KIPjtku8lq/view?usp=sharing)
 
 ## Repository Structure
 
