@@ -21,10 +21,9 @@ def main() -> int:
     for script_name in (
         "run_benchmarks.py",
         "plot_benchmarks.py",
-        "build_presentation.py",
     ):
         run_step(script_name)
-    print("\nPresentation pipeline complete.")
+    print("\nbuild pipeline complete.")
     return 0
 
 

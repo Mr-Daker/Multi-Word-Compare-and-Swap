@@ -1,11 +1,11 @@
-# Programming Assignment 5: Multi-Word Compare-and-Swap (MCAS)
+# CP Project: Multi-Word Compare-and-Swap (MCAS)
 # Student Makefile
 
 .PHONY: all build test clean help \
   test-lin-mcas test-lin-snapshot \
   test-lin-linked-list test-lin-mcas-linked-list \
-  test-lin-stm-volatile test-lin-stm-snapshot \
-  test-stm-volatile test-stm-snapshot \
+  test-lin-stm-snapshot \
+  test-stm-snapshot \
   benchmark benchmark-linked-list benchmark-doubly-linked-list \
   tsan tsan-volatile tsan-snapshot
 
@@ -27,7 +27,6 @@ test:
 	-$(MAKE) test-lin-linked-list
 	-$(MAKE) test-lin-mcas-linked-list
 	-$(MAKE) test-lin-stm-snapshot
-	-$(MAKE) test-stm-volatile
 	-$(MAKE) test-stm-snapshot
 	-$(MAKE) benchmark
 	-$(MAKE) benchmark-linked-list
@@ -57,26 +56,11 @@ test-lin-mcas-linked-list:
 	@echo "=== Running QCheck-Lin Linearizability Test (MCAS linked list) ==="
 	$(OPAM_RUN) dune exec ./qlin/qcheck_lin_mcas_lockfree_linked_list.exe
 
-# Run QCheck-Lin linearizability test for Stm_volatile
-test-lin-stm-volatile:
-	@echo ""
-	@echo "=== Running QCheck-Lin Linearizability Test (stm_volatile) ==="
-	$(OPAM_RUN) dune exec ./qlin/qcheck_lin_stm_volatile.exe
-
 # Run QCheck-Lin linearizability test for Stm_snapshot
 test-lin-stm-snapshot:
 	@echo ""
 	@echo "=== Running QCheck-Lin Linearizability Test (stm_snapshot) ==="
 	$(OPAM_RUN) dune exec ./qlin/qcheck_lin_stm_snapshot.exe
-
-# Run QCheck-STM sequential+concurrent test for Stm_volatile
-test-stm-volatile:
-	@echo ""
-	@echo "=== Running QCheck-STM Test (stm_volatile, sequential) ==="
-	$(OPAM_RUN) dune exec ./stm/qcheck_stm_volatile.exe -- sequential
-	@echo ""
-	@echo "=== Running QCheck-STM Test (stm_volatile, concurrent) ==="
-	$(OPAM_RUN) dune exec ./stm/qcheck_stm_volatile.exe -- concurrent
 
 # Run QCheck-STM sequential+concurrent test for Stm_snapshot
 test-stm-snapshot:
@@ -134,9 +118,7 @@ help:
 	@echo "  make test-lin-snapshot     - QCheck-Lin: MCAS snapshot"
 	@echo "  make test-lin-linked-list  - QCheck-Lin: CAS linked list"
 	@echo "  make test-lin-mcas-linked-list - QCheck-Lin: MCAS linked list"
-	@echo "  make test-lin-stm-volatile - QCheck-Lin: stm_volatile"
 	@echo "  make test-lin-stm-snapshot - QCheck-Lin: stm_snapshot"
-	@echo "  make test-stm-volatile     - QCheck-STM: stm_volatile (seq + conc)"
 	@echo "  make test-stm-snapshot     - QCheck-STM: stm_snapshot (seq + conc)"
 	@echo "  make benchmark             - Run elapsed-time benchmarks (2-8 threads)"
 	@echo "  make benchmark-linked-list - Run linked-list elapsed-time benchmarks"

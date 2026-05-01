@@ -1,9 +1,0 @@
-
-Doubly Linked-List Benchmark Comparison (Elapsed Time)
-initial_keys=128  key_space=256  ops/domain=150000
-
-running coarse_doubly_linked_list        search_100               domains=2
-coarse_doubly_linked_list        search_100               domains=2  ops=  300000  time= 0.142771s  avg=   0.476us/op
-running coarse_doubly_linked_list        search_100               domains=4
-coarse_doubly_linked_list        search_100               domains=4  ops=  600000  time= 0.379041s  avg=   0.632us/op
-running coarse_doubly_linked_list        search_100               domains=8

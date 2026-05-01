@@ -1,7 +1,0 @@
-{
-  "generated_at": "20260427_143757",
-  "command": "opam exec -- dune exec ./benchmarking/benchmark.exe",
-  "returncode": 0,
-  "row_count": 80,
-  "raw_log": "presentation/data/benchmark_raw_latest.txt"
-}
